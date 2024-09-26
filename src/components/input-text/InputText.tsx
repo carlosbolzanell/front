@@ -12,7 +12,7 @@ export default function InputText(props : InputHTMLAttributes<HTMLInputElement> 
     const [typePass, setTypePass] = useState<string | undefined>(props.type)
 
     return (
-        <div className="relative flex flex-col">
+        <div className="relative flex flex-col font-poppins">
             <input 
                 {...props} 
                 type={typePass} 
@@ -27,7 +27,7 @@ export default function InputText(props : InputHTMLAttributes<HTMLInputElement> 
                 className="absolute left-1.5 font-poppins px-1 lg:text-sm text-xs transition-all bg-white 
                 rounded md:peer-placeholder-shown:text-sm peer-placeholder-shown:text-xs 
                 peer-placeholder-shown:text-black peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-2
-                peer-focus:-top-2 peer-focus:left-1.5 peer-focus:bg-white pointer-events-none"
+                peer-focus:-top-2 -top-2 peer-focus:left-1.5 peer-focus:bg-white pointer-events-none"
             >{props?.placeholder}</label>
 
             {props.erro && !focus && (
