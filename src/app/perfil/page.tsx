@@ -25,7 +25,7 @@ export default function Perfil() {
         }
       } catch (error) {
         console.log("Erro ao buscar usuario");
-        router.push("/entrar");
+        router.push("/entrar")
       }
     };
     func();

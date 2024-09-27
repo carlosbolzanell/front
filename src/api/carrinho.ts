@@ -16,6 +16,11 @@ export const removeQuantidade = async (idProduto: number) => {
 }
 
 export const removeProduto = async (idProduto: number) => {
-    const response = await api.delete(`/carrinho/removerProduto?idProduto=${idProduto}`)
+    const response = await api.delete(`/carrinho/remover?idQuantidadeProduto=${idProduto}`)
+    return response.data
+}
+
+export const limparCarrinho = async () => {
+    const response = await api.delete(`/carrinho/limpar`)
     return response.data
 }

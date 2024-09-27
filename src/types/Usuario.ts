@@ -12,6 +12,7 @@ export interface Carrinho{
     quantidade: number
     nomeUsuario: string
     produtos: ProdutosQuantidade[]
+    valorTotal: number
 }
 
 export interface ProdutosQuantidade{

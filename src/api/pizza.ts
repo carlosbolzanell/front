@@ -5,7 +5,7 @@ export const cadastroPizza = async (formData: FormData) => {
     return response.data
 }
 
-export const listarPizzas = async () => {
-    const response = await api.get("/pizza")
+export const listarPizzas = async (tamanho: string) => {
+    const response = await api.get("/pizza?tamanho="+tamanho)
     return response.data
 }

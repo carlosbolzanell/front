@@ -1,30 +1,37 @@
 "use client";
-import { listarPizzas } from "@/api/pizza";
-import CardPizza from "@/components/card-pizza/CardPizza";
-import { Pizza } from "@/types/pizza";
-import React, { useEffect, useState } from "react";
+import PizzasTamanho from "@/components/pizzas-tamanho/PizzasTamanho";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Pizzas() {
-  const [pizzas, setPizzas] = useState<Pizza[]>([]);
 
-  useEffect(() => {
-    const func = async () => {
-      const getPizzas = await listarPizzas();
-      if (getPizzas) {
-        setPizzas(getPizzas.content);
-      }
-    };
-    func();
-  }, []);
 
   return (
-    <main>
-      <h1 className="text-2xl text-center my-5">Pizzas do cardápio</h1>
-      <div className="grid grid-cols-3 gap-2 w-[90%] mx-auto">
-        {pizzas.map((pizza) => (
-          <CardPizza key={pizza.id} pizza={pizza} />
-        ))}
-      </div>
-    </main>
+    <div className="mt-4 flex flex-col items-center justify-center font-poppins">
+      <h1 className="mb-4 text-2xl">Pizzas</h1>
+      <Tabs defaultValue="broto" className="w-[85%]">
+        <TabsList className="grid w-full bg-gray-100 grid-cols-5">
+          <TabsTrigger value="broto" className="bg-white">Broto</TabsTrigger>
+          <TabsTrigger value="pequena" className="bg-white">Pequena</TabsTrigger>
+          <TabsTrigger value="media" className="bg-white">Média</TabsTrigger>
+          <TabsTrigger value="grande" className="bg-white">Grande</TabsTrigger>
+          <TabsTrigger value="gigante" className="bg-white">Gigante</TabsTrigger>
+        </TabsList>
+        <TabsContent value="broto">
+          <PizzasTamanho tamanho="BROTO" />
+        </TabsContent>
+        <TabsContent value="pequena">
+          <PizzasTamanho tamanho="PEQUENA" />
+        </TabsContent>
+        <TabsContent value="media">
+          <PizzasTamanho tamanho="MEDIA" />
+        </TabsContent>
+        <TabsContent value="grande">
+          <PizzasTamanho tamanho="GRANDE" />
+        </TabsContent>
+        <TabsContent value="gigante">
+          <PizzasTamanho tamanho="GIGANTE" />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }
